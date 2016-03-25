@@ -17,23 +17,20 @@ import java.util.*;
 
  */
 public class RBF_interpTest {
+    protected static long startTimeStamp, endTimeStamp;
     public static void main(String[] args) throws ParseException {
 
+        startTimeStamp = System.currentTimeMillis();
         InterpResult interpResult = new InterpResult("2013-12-18 06:00:00");    //set a time point
 
-        //(48.05,125.883)在“2013-12-18 06:00:00”时刻的spd为2，dir为40。测试插值结果是否正确
-        interpResult.interpSpd(48.05,125.883);     //set the lat and lon to get its interpolated wind-speed value
-        interpResult.interpDir(48.05,125.883);     //set the lat and lon to get its interpolated wind-direction value
-
-        //(48.767,121.917)在“2013-12-18 06:00:00”时刻的spd为7，dir为340，测试插值结果是否正确
-        interpResult.interpSpd(48.767,121.917);     //set the lat and lon to get its interpolated wind-speed value
-        interpResult.interpDir(48.767,121.917);     //set the lat and lon to get its interpolated wind-direction value
 
         //计算未知点(40,116)在此时刻下的spd和dir
         interpResult.interpSpd(40,116);     //set the lat and lon to get its interpolated wind-speed value
         interpResult.interpDir(40,116);     //set the lat and lon to get its interpolated wind-direction value
 
-
+        endTimeStamp = System.currentTimeMillis();
+        long time = endTimeStamp-startTimeStamp;
+        System.out.println("total time:" + time + "ms");
 
 
 
